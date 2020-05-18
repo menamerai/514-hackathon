@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Default settings for website -->
+    <title>Mapping for farmers</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Linking CSS -->
+    <link rel="stylesheet" , type="text/css" href="style.css">
+    <!-- Google font add -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="nav-bar">
+        <ul>
+            <li><a href="#header">Explore</a></li>
+            <li><a href="#main">Farmers</a></li>
+            <li><a id="coming" href="#">Businesses</a></li>
+            <li><a href="#footer">Info</a></li>
+        </ul>
+    </nav>
+    <header id="header">
+        <button id="action"><a id="alink" href="#">Explore our product</a></button>
+        <div class="container">
+            <h1 id="welcome">Welcome to our website!</h1>
+            <p class="description">You are welcomed.</p>
+        </div>
+    </header>
+    <main id="main">
+        <!--- Description -->
+        <br>
+        <h2>Farmer's map</h2>
+        <p class="description">
+            Double-click to add a marker anywhere.
+        </p>
+        <p class="description">
+            Press the preferred icon, then press change icon to change icon.
+        </p>
+        <!-- Adding map -->
+        <div id="map"></div>
+        <!-- Adding the custom icon chooser -->
+        <form id="icon-chooser">
+            <input id="brocoli" type="radio" name="custom-icon" value="brocoli" checked>
+            <label for="brocoli"><img src="images/brocoli.png" alt="Brocoli"></label>
+            <input id="carrot" type="radio" name="custom-icon" value="carrot">
+            <label for="carrot"><img src="images/carrot.png" alt="Carrot"></label>
+            <input id="turnip" type="radio" name="custom-icon" value="turnip">
+            <label for="turnip"><img src="images/turnip.png" alt="Turnip"></label>
+        </form>
+        <!--- Icon change button -->
+        <button id="change">Change Icon!</button>
+    </main>
+    <footer id="footer">
+        <h2>Thank you for viewing our website!</h2>
+        <hr align="center">
+        <h2>Made by team 514</h2>
+    </footer>
+    <!-- Linking JS -->
+    <script src="script/script.js"></script>
+    <!--- Adding Google Maps API, with AIzaSyAyvD7ectEffrIabMyli05yViQGKnKEalY as the API key-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQsN9gTthgMTcFdGx8njGi1j_mgAqMi5E&callback=initMap"
+        async defer></script>
+</body>
+
+</html>

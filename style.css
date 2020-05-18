@@ -1,0 +1,137 @@
+:root {
+    --main: #5cdb95;
+    --dark: #379683;
+    --light: #8ee4af;
+    --black: #05386b;
+    --white: #edf5e1;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+#map {
+    height: 70vh;
+    width: 70%;
+    margin: 0 auto 3vh auto;
+    background-color: var(--dark);
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--main);
+    font-family: 'Jost', sans-serif;
+}
+/* Start of header formatting */
+header {
+    height: 92vh;
+    background-color: var(--main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container, #action {
+    margin: 2em;
+}
+#action {
+    background-color: transparent;
+    border: 4px solid var(--white);
+    border-radius: 10px;
+    transition: all 300ms;
+}
+#alink {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 28px;
+    display: block;
+    padding: 1.2em;
+}
+#action:hover {
+    background-color: var(--white);
+    border-color: var(--white);
+}
+#action:hover > #alink {
+    color: var(--main);
+}
+#welcome {
+    color: var(--dark);
+    font-size: 64px;
+    margin-bottom: 0.35em;
+}
+.description {
+    color: var(--white);
+    font-size: 48px;
+}
+/* Start of main elements formatting */
+main {
+    background-color: var(--dark);
+    text-align: center;
+}
+h2 {
+    font-size: 42px;
+    margin-top: 0.7em;
+    margin-bottom: 0.3em;
+    color: var(--light);
+}
+main > .description {
+    font-size: 24px;
+    margin-bottom: 0.3em;
+}
+#change {
+    background-color: transparent;
+    border: 4px solid var(--white);
+    border-radius: 10px;
+    transition: all 300ms;
+    font-size: 16px;
+    padding: 0.3em;
+    cursor: pointer;
+    color: var(--white);
+    transition: all 300ms;
+    width: 15vw;
+    margin: 1em;
+}
+#change:hover {
+    background-color: var(--white);
+    border-color: var(--white);
+    color: var(--main);
+}
+/* Start of navbar formatting */
+nav {
+    width: 100%;
+    background-color: var(--dark);
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 2px 3px 2px var(--black);
+    z-index: 5;
+}
+ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+}
+ul > li > a {
+    padding: 3vh;
+    display: block;
+    transition: all 300ms;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 5px;
+}
+ul > li > a:hover {
+    background-color: var(--black);
+}
+/* Start of footer formatting */
+footer {
+    text-align: center;
+}
+footer > h2 {
+    font-size: 24px;
+    color: var(--dark);
+    margin: 1em;
+}
+hr {
+    width: 15em;
+    margin: auto;
+}
