@@ -21,7 +21,7 @@
     const signupButton = document.getElementById("signup");
     const logoutButton = document.getElementById("logout");
 
-    // Add login element
+    // Add login function
     loginButton.addEventListener("click", lo => {
         // Retrieve email and password
         const email = emailField.value;
@@ -36,9 +36,9 @@
             console.log(errorMessage);
             console.log(errorCode);
             window.alert("Login failed, please try again. Or simply create a new account");
-            // Delete password field here
           });
     });
+    // Add signup function
     signupButton.addEventListener("click", si => {
         const email = emailField.value;
         const pass = passwordField.value;
@@ -50,6 +50,7 @@
             window.alert("Signup failed, please try again.")
         })
     });
+    // Add logout function
     logoutButton.addEventListener("click", lout => {
         firebase.auth().signOut().then(function() {
             console.log('Signed Out');
@@ -57,6 +58,7 @@
             console.error('Sign Out Error', error);
           });
     })
+    // Get authentication stage change to hide/show specific elements
     firebase.auth().onAuthStateChanged(function(user) {
         console.log(firebase.auth().currentUser);
         if (user) { // User is signed in
