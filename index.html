@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <!--- Login form to show so that users can login -->
     <div id="login">
         <form id="login-form" action="#">
             <h1 id="login-title">Please log in.</h1>
@@ -31,7 +32,9 @@
             </div>
         </form>
     </div>
-    <div id="logged" style="display: none;">
+    <!--- The main elements to be showed when user is logged in-->
+    <div id="logged" style="display: none;"> <!--- This is default to none -->
+        <!--- Navigation bar here -->
         <nav id="nav-bar">
             <ul>
                 <li><a href="#header">Explore</a></li>
@@ -41,7 +44,10 @@
                 <li><a id="logout" href="#">Logout</a></li>
             </ul>
         </nav>
+        <!--- The main page header, with an action button -->
         <header id="header">
+            <!--- Action button does nothing yet,
+            planning on putting the actual pitching slides in here -->
             <button id="action"><a id="alink" href="#">Explore our product</a></button>
             <div class="container">
                 <h1 id="welcome">Welcome to our website!</h1>
@@ -49,7 +55,7 @@
             </div>
         </header>
         <main id="main">
-            <!--- Description -->
+            <!--- Description and instructions -->
             <br>
             <h2>Farmer's map</h2>
             <p class="description">
@@ -72,6 +78,7 @@
             <!--- Icon change button -->
             <button id="change">Change Icon!</button>
         </main>
+        <!--- Main page footer with contact, might not be needed -->
         <footer id="footer">
             <h2>Thank you for viewing our website!</h2>
             <hr align="center">
@@ -82,8 +89,8 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!--- Adding Firebase Libraries -->\
+    <!--- Google Analytics-->
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
