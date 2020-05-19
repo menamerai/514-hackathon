@@ -1,3 +1,16 @@
+// Loggin in
+var userLogin = false;
+
+if (!userLogin) {
+  document.getElementById("login").style.display = "initial";
+  document.getElementById("logged").style.display = "none";
+} else {
+  document.getElementById("login").style.display = "none";
+  document.getElementById("logged").style.display = "initial";
+}
+
+
+
 var map;
 function initMap() {
   // Create center point of map when first acessing the website
