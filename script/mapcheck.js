@@ -21,14 +21,15 @@ function iconCheck(icons) {
     }
   }
   // Logging the console for debugging
-  console.log(iconChosen);
-  nameIn = document.getElementById("name-field").value;
-  desIn = document.getElementById("description-field").value;
+  // console.log(iconChosen);
+  // Make the map visible for the user after first submit
   document.getElementById("map").style.display = "block";
+  // Scroll to the map after 1s
   setTimeout(function() {
     console.log("Scrolling...");
     document.getElementById("main").scrollIntoView(true);
   }, 1000);
-    document.getElementById("des1").innerHTML = "Form completed.";
-    document.getElementById("des2").innerHTML = "Double-click on the map to create a new marker.";
+  // Change the instructions to fit
+  document.getElementById("des1").innerHTML = "Form completed.";
+  document.getElementById("des2").innerHTML = "Double-click on the map to create a new marker.";
 }

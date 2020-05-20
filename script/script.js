@@ -19,7 +19,7 @@ function initMap() {
   Second is an object to specify its properties */ 
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-  /* Add an event listener to the user's double click on the map
+  /* Add an event listener to the user's click on the map
   When the event is registered, the placeMarker function will be called
   with the passed argument being the current mouse coordinates,
   or event.latLng */ 
@@ -36,19 +36,33 @@ function initMap() {
       icon: iconChosen,
       draggable: true
     });
+    // Delete marker with doubleclick
     marker.addListener('dblclick', function() {
       marker.setMap(null);
     });
-    marker.addListener("click", function() {
+    // Define the function to create and return an InfoWindow with 3 arguments
+    function getInfo(infoName, infoDescription, contact) {
+      return new google.maps.InfoWindow({
+        content: '<div><h3>' + infoName + '</h3><p>Contact me through: ' + contact + '</p><p><em>' + infoDescription + '</em></p></div>'
+      });
+    }
+    // Initialize the array
+    var infoArr;
+    // Define the function that takes the form value as soon as it is submitted
+    function submitInfo() {
       var infoName = document.getElementById("name-field").value;
       var infoDescription = document.getElementById("description-field").value;
       var contact = document.getElementById("contact-number").value;
-      var infoWindow = new google.maps.InfoWindow({
-        content: '<div><h3>' + infoName + '</h3><p>Contact me through: ' + contact + '</p><p><em>' + infoDescription + '</em></p></div>'
-      });
-      infoWindow.open(map, marker);
+      return [infoName, infoDescription, contact];
+    }
+    // Listen to the submit and get the values as an array
+    document.getElementById("change").addEventListener("click", infoArr = submitInfo());
+    // Generate the InfoWindow with the previously submitted values
+    marker.addListener("click", function() {
+      // Sppread the array
+      getInfo(...infoArr).open(map, marker);
     });
-    console.log(iconChosen);
+    // console.log(iconChosen);
   }
   
 }

@@ -95,6 +95,9 @@ main > .description {
     border-color: var(--white);
     color: var(--main);
 }
+#icon-chooser {
+    margin-top: 2em;
+}
 #icon-chooser, #text-fields {
     display: flex;
     flex-direction: column;
