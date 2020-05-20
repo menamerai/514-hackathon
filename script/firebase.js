@@ -65,10 +65,12 @@
             console.log("Signed in!");
             document.getElementById("logged").style.display = "initial";
             document.getElementById("login").style.display = "none";
+            document.getElementById("current-email").innerHTML = firebase.auth().currentUser.email;
         } else {
             console.log("Signed out!");
             document.getElementById("logged").style.display = "none";
             document.getElementById("login").style.display = "initial";
+            document.getElementById("current-email").innerHTML = null;
         }
     })
 }());

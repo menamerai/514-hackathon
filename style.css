@@ -8,12 +8,14 @@
 * {
     margin: 0;
     padding: 0;
+    transition: all 300ms;
 }
 #map {
     height: 70vh;
     width: 70%;
-    margin: 0 auto 3vh auto;
-    background-color: var(--dark);
+    margin: 0 auto 0 auto;
+    background-color: var(--light);
+    border-radius: 10px;
 }
 html {
     scroll-behavior: smooth;
@@ -37,7 +39,6 @@ header {
     background-color: transparent;
     border: 4px solid var(--white);
     border-radius: 10px;
-    transition: all 300ms;
 }
 #alink {
     text-decoration: none;
@@ -66,6 +67,7 @@ header {
 main {
     background-color: var(--dark);
     text-align: center;
+    padding-bottom: 2em;
 }
 h2 {
     font-size: 42px;
@@ -81,12 +83,10 @@ main > .description {
     background-color: transparent;
     border: 4px solid var(--white);
     border-radius: 10px;
-    transition: all 300ms;
     font-size: 16px;
     padding: 0.3em;
     cursor: pointer;
     color: var(--white);
-    transition: all 300ms;
     width: 15vw;
     margin: 1em;
 }
@@ -95,6 +95,51 @@ main > .description {
     border-color: var(--white);
     color: var(--main);
 }
+#icon-chooser, #text-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#name-field, #description-field, #contact-number {
+    width: 35vw;
+    background-color: transparent;
+    border: 3px solid var(--white);
+    border-radius: 10px;
+    transition: all 300ms;
+    font-size: 16px;
+    padding: 0.8em;
+    color: var(--black);
+}
+#name-field:focus, #description-field:focus, #contact-number:focus {
+    background-color: var(--main);
+    border-color: var(--black);
+}
+#icon-chooser > div > label {
+    font-size: 24px;
+    color: var(--white);
+}
+ /* #img-upload {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+#browse {
+    display: block;
+    background-color: transparent;
+    border: 4px solid var(--white);
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 0.3em;
+    cursor: pointer;
+    color: var(--white);
+    width: 15vw;
+    margin: 1em;
+}
+#browse:hover {
+    border-color: var(--black);
+    color: var(--black);
+    background-color: var(--main);
+} */
 /* Start of navbar formatting */
 nav {
     width: 100%;
@@ -114,7 +159,6 @@ ul {
 ul > li > a {
     padding: 3vh;
     display: block;
-    transition: all 300ms;
     text-decoration: none;
     color: var(--white);
     border-radius: 5px;
@@ -128,12 +172,20 @@ footer {
 }
 footer > h2 {
     font-size: 24px;
-    color: var(--dark);
+    color: var(--black);
     margin: 1em;
 }
 hr {
     width: 15em;
     margin: auto;
+}
+#current-email {
+    color: var(--white);
+    font-weight: bold;
+    margin-right: 2em;
+}
+#current-email:hover {
+    color: var(--black);
 }
 /* Login screen formatting */
 #login {
@@ -172,13 +224,18 @@ hr {
     background-color: transparent;
     border: 3px solid var(--white);
     border-radius: 10px;
-    transition: all 300ms;
     font-size: 16px;
     padding: 0.8em;
     color: var(--black);
-    transition: all 300ms;
 }
 .input > input:focus {
     background-color: var(--dark);
     border-color: var(--black);
+}
+#main-window {
+    display: none;
+}
+
+#content {
+    width: 100px;
 }
