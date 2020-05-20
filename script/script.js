@@ -1,3 +1,4 @@
+var fstr = firebase.firestore()
 var map;
 function initMap() {
   var mainFocus = new google.maps.LatLng(-34.397, 150.644);
@@ -27,7 +28,7 @@ function initMap() {
     placeMarker(event.latLng);
   });
   // The placeMarker function definition
-  function placeMarker(location) { // the location argument being even.latLng
+  function placeMarker(location) { // the location argument being event.latLng
     // Create a new marker
     var marker = new google.maps.Marker({
       position: location,
@@ -59,10 +60,33 @@ function initMap() {
     document.getElementById("change").addEventListener("click", infoArr = submitInfo());
     // Generate the InfoWindow with the previously submitted values
     marker.addListener("click", function() {
+      var infoWindow = getInfo(...infoArr);
       // Sppread the array
-      getInfo(...infoArr).open(map, marker);
+      infoWindow.open(map, marker);
     });
     // console.log(iconChosen);
+    function backendSubmit(backArr) {
+      const arrayify = /\d+.\d+/g;
+      backArr.push(...location.toString().match(arrayify));
+      backArr.unshift(firebase.auth().currentUser.email);
+      backArr.push(iconChosen);
+      console.log(backArr);
+      var backObj = {};
+      backObj.email = backArr[0];
+      backObj.name = backArr[1];
+      backObj.description = backArr[2];
+      backObj.contactinfo = backArr[3];
+      backObj.lat = backArr[4];
+      backObj.lng = backArr[5];
+      backObj.type = backArr[6]; 
+      fstr.collection("infoinput").add(backObj)
+      .then(function(docRef) {
+        console.log("Written with document ID " + docRef.id);
+      }).catch(function(error) {
+        console.log("Error: " + error);
+      })
+    }
+    backendSubmit(infoArr);
   }
   
 }

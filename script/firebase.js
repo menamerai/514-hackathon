@@ -1,3 +1,6 @@
+/* const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore"); */
 (function() {
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -13,6 +16,7 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+    var db = firebase.firestore()
 
     // Get the login DOM elements
     const emailField = document.getElementById("email");
