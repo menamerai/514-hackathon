@@ -39,8 +39,8 @@
             <ul>
                 <li id="current-email"></li>
                 <li><a href="#header">Explore</a></li>
-                <li><a href="#main">Farmers</a></li>
-                <li><a id="coming" href="#">Businesses</a></li>
+                <li><a href="#main" onclick="switchFarmer()">Farmers</a></li>
+                <li><a id="business" onclick="switchBusiness()" href="#business-area">Businesses</a></li>
                 <li><a href="#footer">Info</a></li>
                 <li><a id="logout" href="#">Logout</a></li>
             </ul>
@@ -89,11 +89,16 @@
                 <!-- <label for="img-upload" id="browse">Browse...</label>
                 <input type="file" id="img-upload" accept="image/png, image/jpeg" multiple>
                 <div id="uploaded"></div> --->
-                <input type="button" value="Submit Marker" id="change">
+                <input type="button" value="Place Marker" id="change">
+                <input type="button" value="Submit Marker" id="submit-marker" style="display: none;">
             </form>
             <!--- Icon change button -->
             
         </main>
+        <div id="business-area" style="display: initial;">
+            <h2>Business map</h2>
+            <div id="bmap"></div>
+        </div>
         <!--- Main page footer with contact, might not be needed -->
         <footer id="footer">
             <h2>Thank you for viewing our website!</h2>
@@ -117,8 +122,9 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
     <!-- Linking JS -->
     <script src="script/firebase.js"></script>
-    <script src="script/mapcheck.js"></script>
     <script src="script/navbar.js"></script>
+    <script src="script/mapcheck.js"></script>
+    <script src="script/switch.js"></script>
     <script src="script/script.js"></script>
     <!--- Adding Google Maps API, with AIzaSyB0_tKXmvafjzQQYQkDln-0nXNRXcniJqg as the API key-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQsN9gTthgMTcFdGx8njGi1j_mgAqMi5E&callback=initMap"

@@ -22,7 +22,7 @@ function getDocHeight() {
     // Debug
     // console.log(pctScrolled + '% scrolled')
     // Change navbar color
-    if (pctScrolled >= 34) {
+    if (pctScrolled >= 34 && pctScrolled <= 70) {
       document.getElementById("nav-bar").style.backgroundColor = "#5cdb95";
     } else {
       document.getElementById("nav-bar").style.backgroundColor = "#379683";

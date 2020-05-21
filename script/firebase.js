@@ -1,3 +1,6 @@
+/* const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore"); */
 (function() {
     // Your web app's Firebase configuration
     var firebaseConfig = {
