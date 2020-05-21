@@ -2,11 +2,15 @@
 var iconChosen = "images/brocoli.png";
 // Listen for button click
 document.getElementById("change").addEventListener("click", function() {
+  /* var name = document.getElementById("name-field").value;
+  var details = document.getElementById("description-field").value;
+  var tele = document.getElementById("contact-number").value; */
   // Calling the iconCheck function
   // Passing the radio group as an argument
   iconCheck(document.getElementsByName("custom-icon"));
   // Alerting the user that the icon changed
   alert("Icon changed");
+  document.getElementById("submit-marker").style.display = "initial";
 });
 // Defining the iconCheck function
 function iconCheck(icons) {
