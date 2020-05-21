@@ -21,6 +21,7 @@ function initMap() {
   Second is an object to specify its properties */ 
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
   var bmap = new google.maps.Map(document.getElementById("bmap"), mapOptions);
+  
   // Get all of the marker data
   fstr.collection("infoinput").get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
@@ -44,7 +45,24 @@ function initMap() {
         });
         businessInfo.open(bmap, loadMarker);
       });
-      
+      loadMarker.addListener("dblclick", function() {
+        console.log("Double clicked");
+        if (doc.data().email != firebase.auth().currentUser.email) {
+          fstr.collection("requests").add({
+            receiver: doc.data().email,
+            sender: firebase.auth().currentUser.email
+          }).then(function(docRef){
+            fstr.collection("requests").doc(docRef.id).set({
+              id: docRef.id,
+              name: doc.data().name
+            }, { merge: true });
+            console.log("Written with document ID " + docRef.id);
+            alert("Request sent.")
+          }).catch(function(error) {
+            console.log(error);
+          })
+        }
+      })
       // Load only the markers that belongs to the current user on the main map
       if (doc.data().email === firebase.auth().currentUser.email) {
         var localMarker = new google.maps.Marker({
@@ -66,13 +84,42 @@ function initMap() {
           let lName = doc.data().name;
           let lContact = doc.data().contactinfo;
           let lDescription = doc.data().description;
-          var localInfo = new google.maps.InfoWindow({
-            content: '<div><h3>' + lName + '</h3><p>Contact me through: ' + lContact + '</p><p><em>' + lDescription + '</em></p></div>'
-          });
-          localInfo.open(map, localMarker);
+          if (document.getElementById("welcome").innerHTML === "You've got mail!") {
+            fstr.collection("requests").get().then((snapshot2) => {
+              snapshot2.docs.forEach(doc2 => {
+                if (doc2.data().name === lName) {
+                  console.log(doc2.data().name);
+                  console.log(lName);
+                  var localInfo = new google.maps.InfoWindow({
+                    content: '<div><h3>' + lName + '</h3><p>Contact me through: ' + lContact + '</p><p><em>' + lDescription + ', Requested by ' + doc2.data().sender +'</em></p></div>'
+                  });
+                  localInfo.open(map, localMarker);
+                }
+              })
+            })
+          } else {
+            var localInfo = new google.maps.InfoWindow({
+              content: '<div><h3>' + lName + '</h3><p>Contact me through: ' + lContact + '</p><p><em>' + lDescription + '</em></p></div>'
+            });
+            localInfo.open(map, localMarker);
+          }
         });
       }
     })
+  })
+
+  fstr.collection("requests").get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+      if (doc.data().receiver === firebase.auth().currentUser.email) {
+        console.log("Matching request found.")
+        document.getElementById("welcome").innerHTML = "You've got mail!"
+        document.getElementById("des1").innerHTML = "Check these markers out:"
+        document.getElementById("des2").innerHTML += doc.data().name + ", ";
+      }
+
+    })
+  }).catch(function(error) {
+    console.log("No requests found in database.")
   })
 
   /* Add an event listener to the user's click on the map
@@ -167,4 +214,10 @@ function initMap() {
       }, 2000);  */
     });
   }
+}
+function request(email) {
+  fstr.collection("requests").add({
+    sender: firebase.auth().currentUser.email,
+    receive: doc.data().email
+  });
 }

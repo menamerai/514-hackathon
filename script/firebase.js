@@ -1,3 +1,5 @@
+// import { initializeApp } from "firebase";
+
 /* const firebase = require("firebase");
 // Required for side-effects
 require("firebase/firestore"); */
@@ -16,7 +18,6 @@ require("firebase/firestore"); */
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-
     // Get the login DOM elements
     const emailField = document.getElementById("email");
     const passwordField = document.getElementById("password");
@@ -40,6 +41,8 @@ require("firebase/firestore"); */
             console.log(errorCode);
             window.alert("Login failed, please try again. Or simply create a new account");
           });
+
+        
     });
     // Add signup function
     signupButton.addEventListener("click", si => {
@@ -57,6 +60,7 @@ require("firebase/firestore"); */
     logoutButton.addEventListener("click", lout => {
         firebase.auth().signOut().then(function() {
             console.log('Signed Out');
+            window.location.reload();
           }, function(error) {
             console.error('Sign Out Error', error);
           });
@@ -75,5 +79,6 @@ require("firebase/firestore"); */
             document.getElementById("login").style.display = "initial";
             document.getElementById("current-email").innerHTML = null;
         }
-    })
+    });
+
 }());

@@ -254,3 +254,7 @@ hr {
 #business-area > h2 {
     color: var(--dark);
 }
+#des2 {
+    font-size: 16px;
+    color: white;
+}
